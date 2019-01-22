@@ -21,6 +21,7 @@ abstract class RisicoRijkeAttracties extends Attractie {
 			kaartjes++;
 			beurtGehad = false;
 		}
+
 	}
 
 }

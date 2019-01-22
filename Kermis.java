@@ -1,18 +1,17 @@
 package kermisOpdracht;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Kermis {
-
+	
 	Scanner sc = new Scanner(System.in);
 	ArrayList<Attractie> aa = new ArrayList<>();
 	Kassa kassa = new Kassa();
-
+	Random random = new Random(15);
+	
 	public static void main(String[] args) {
-		System.out.println('k' + 0);
-		System.out.println('k');
-
 		new Kermis().run();
 	}
 
@@ -33,8 +32,13 @@ public class Kermis {
 	}
 
 	private void getChoice() {
-
+			
 		if (sc.hasNextInt()) {
+			
+			if(random.nextInt(100) < 15) {
+				System.out.println("Een belasting inspecteur komt kansspel belasting innen.");
+				new BelastingInspecteur().zakkenVullen(aa, kassa);
+			}
 			aa.get(sc.nextInt() - 1).draaien();
 		} else if (sc.hasNextLine()) {
 			String s = sc.nextLine();
@@ -49,7 +53,7 @@ public class Kermis {
 	}
 
 	private void opstellingsKeuring() {
-		 System.out.println("Een monteur komt langs om onderhoud te plegen.");
+		 System.out.println("Een monteur komt langs om onderhoud te plegen.\n\n");
 		
 		for (Attractie a : aa) {
 			if(a instanceof RisicoRijkeAttracties) {

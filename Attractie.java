@@ -12,7 +12,7 @@ public abstract class Attractie {
 		this.oppervlakte = oppervlakte;
 	}
 	
-//	override the toString method (because im lazy)
+//	override the toString method (because i'm lazy)
 	@Override
 	public String toString() {
 		return naam;

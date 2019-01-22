@@ -3,6 +3,7 @@ package kermisOpdracht;
 import java.util.ArrayList;
 
 public class Kassa {
+	double betaaldeBelasting;
 
 	int getKaartjes(ArrayList<Attractie> aa) {
 		int k = 0;
