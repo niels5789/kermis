@@ -5,12 +5,12 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Kermis {
-	
+
 	Scanner sc = new Scanner(System.in);
 	ArrayList<Attractie> aa = new ArrayList<>();
 	Kassa kassa = new Kassa();
 	Random random = new Random(15);
-	
+
 	public static void main(String[] args) {
 		new Kermis().run();
 	}
@@ -32,14 +32,22 @@ public class Kermis {
 	}
 
 	private void getChoice() {
-			
+
 		if (sc.hasNextInt()) {
-			
-			if(random.nextInt(100) < 15) {
+
+			if (random.nextInt(100) < 15) {
 				System.out.println("Een belasting inspecteur komt kansspel belasting innen.");
 				new BelastingInspecteur().zakkenVullen(aa, kassa);
 			}
-			aa.get(sc.nextInt() - 1).draaien();
+			
+			try {
+				aa.get(sc.nextInt() - 1).draaien();
+			} catch (RuntimeException e) {
+				System.err.println(e.getMessage());
+				System.err.println("Bestel met (m) een monteur.");
+			}
+			
+			
 		} else if (sc.hasNextLine()) {
 			String s = sc.nextLine();
 			if (s.equals("o")) {
@@ -53,18 +61,18 @@ public class Kermis {
 	}
 
 	private void opstellingsKeuring() {
-		 System.out.println("Een monteur komt langs om onderhoud te plegen.\n\n");
-		
+		System.out.println("Een monteur komt langs om onderhoud te plegen.\n\n");
+
 		for (Attractie a : aa) {
-			if(a instanceof RisicoRijkeAttracties) {
-				if(a.kaartjes != 0 && !((RisicoRijkeAttracties)a).beurtGehad && a.kaartjes % ((RisicoRijkeAttracties)a).MAXRUNS == 0) {
-					((RisicoRijkeAttracties)a).beurtGehad = true;
-					System.out.println("De monteur heeft onderhoud gepleegd aan " + a.naam + " en de attractie is weer open voor bezoekers.");
+			if (a instanceof RisicoRijkeAttracties) {
+				if (a.kaartjes != 0 && !((RisicoRijkeAttracties) a).beurtGehad
+						&& a.kaartjes % ((RisicoRijkeAttracties) a).MAXRUNS == 0) {
+					((RisicoRijkeAttracties) a).beurtGehad = true;
+					System.out.println("De monteur heeft onderhoud gepleegd aan " + a.naam
+							+ " en de attractie is weer open voor bezoekers.");
 				}
-				
 			}
 		}
-		
 	}
 
 	private void printKaartjes() {
