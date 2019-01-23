@@ -11,10 +11,10 @@ abstract class RisicoRijkeAttracties extends Attractie {
 	}
 
 	@Override
-	protected void draaien() {
+	protected void draaien() throws RuntimeException {
 
 		if (!beurtGehad && kaartjes % MAXRUNS == 0) {
-			System.out.println("Sorry " + naam + " is gesloten voor onderhoud.");
+			throw new RuntimeException("Sorry " + naam + " is gesloten voor onderhoud. \n\n");
 		} else {
 			System.out.println("Je koopt een kaartje voor " + naam);
 			omzet += prijs;

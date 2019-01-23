@@ -16,6 +16,6 @@ double belastingGeldTotaal, belastingGeldDeze;
 		System.out.println("Tot nu toe is er " + k.betaaldeBelasting + "afgedragen.\n\n");
 		
 		k.betaaldeBelasting = belastingGeldTotaal;
-		
+
 	}
 }

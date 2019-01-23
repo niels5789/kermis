@@ -6,5 +6,4 @@ public class LadderKlimmen extends Attractie implements GokAttractie{
 		super(naam, prijs, oppervlakte);
 		// TODO Auto-generated constructor stub
 	}
-
 }
